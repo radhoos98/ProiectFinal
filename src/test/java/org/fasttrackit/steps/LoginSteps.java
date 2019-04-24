@@ -1,4 +1,4 @@
-package org.fasttrackit.steps.serenity;
+package org.fasttrackit.steps;
 
 import net.thucydides.core.annotations.Step;
 import org.fasttrackit.pages.Homepage;
