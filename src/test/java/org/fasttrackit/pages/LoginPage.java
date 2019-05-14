@@ -4,29 +4,30 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
+import org.fasttrackit.utils.Credentials;
 
-@DefaultUrl("https://fasttrackit.org/selenium-test/customer/account/login/")
+@DefaultUrl("http://qa2.fasttrackit.org:8008/")
 public class LoginPage extends PageObject {
 
 
-    @FindBy(id = "email")
+    @FindBy(id = "username.woodcommerce-Input.woodcommerce-Input--text.input-text")
     private WebElementFacade emailField;
 
-    @FindBy(id = "pass")
+    @FindBy(id = "password.woodcommerce-Input.woodcommerce-Input--text.input-text")
     private WebElementFacade passField;
 
-    @FindBy(id = "send2")
+    @FindBy(css = "button.woodcommerce-Button.button")
     private WebElementFacade loginButton;
 
-    @FindBy(css = "li.error-msg span")
+    @FindBy(css = "ul.woodcommerce-error")
     private WebElementFacade errorMessage;
 
-    public void setEmailField(String email){
-        typeInto(emailField, email);
+    public void setEmailField(String USER_NAME){
+        typeInto(emailField, Credentials.USER_NAME);
     }
 
-    public void setPassField(String pass){
-        typeInto(passField, pass);
+    public void setPassField(String USER_PASS){
+        typeInto(passField,Credentials.USER_PASS);
     }
 
     public void clickLoginButton(){

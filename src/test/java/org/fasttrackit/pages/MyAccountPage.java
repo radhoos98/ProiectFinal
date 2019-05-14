@@ -5,7 +5,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 
-@DefaultUrl("https://fasttrackit.org/selenium-test/customer/account/")
+@DefaultUrl("http://qa2.fasttrackit.org:8008/")
 public class MyAccountPage extends PageObject {
 
     @FindBy(css = ".hello strong")

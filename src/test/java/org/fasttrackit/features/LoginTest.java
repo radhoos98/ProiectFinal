@@ -3,6 +3,7 @@ package org.fasttrackit.features;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.fasttrackit.utils.Credentials;
 import org.fasttrackit.steps.LoginSteps;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class LoginTest {
     public void loginWithValidCredentials(){
         loginSteps.navigateToHomepage();
         loginSteps.goToLoginPage();
-        loginSteps.loginUser("cosmin@fasttrackit.org","123456");
+        loginSteps.loginUser(Credentials.USER_NAME,Credentials.USER_PASS);
         loginSteps.checkUserIsLoggedIn();
     }
 
@@ -35,7 +36,7 @@ public class LoginTest {
     public void loginWithInvalidPassword(){
         loginSteps.navigateToHomepage();
         loginSteps.goToLoginPage();
-        loginSteps.loginUser("cosmin@fasttrackit.org","123adsda");
+        loginSteps.loginUser("USER_NAME","123asdasd");
         loginSteps.checkUserNotLoggedIn();
     }
 
@@ -43,14 +44,14 @@ public class LoginTest {
     public void loginWithIncorrectEmail(){
         loginSteps.navigateToHomepage();
         loginSteps.goToLoginPage();
-        loginSteps.loginUser("cosmaasdn@fasttrackit.org","123adsda");
+        loginSteps.loginUser("rsrbanescu@yahoo.com","USER_PASS");
         loginSteps.checkUserNotLoggedIn();
     }
     @Test
     public void loginWithInvalidEmail(){
         loginSteps.navigateToHomepage();
         loginSteps.goToLoginPage();
-        loginSteps.loginUser("cosminfasttrackit.org","123adsda");
+        loginSteps.loginUser("rserbanescu.yahoo.com","USER_PASS");
         loginSteps.userStillOnLoginPage();
     }
 

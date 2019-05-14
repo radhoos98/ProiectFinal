@@ -4,6 +4,7 @@ import net.thucydides.core.annotations.Step;
 import org.fasttrackit.pages.Homepage;
 import org.fasttrackit.pages.LoginPage;
 import org.fasttrackit.pages.MyAccountPage;
+import org.fasttrackit.utils.Credentials;
 
 public class LoginSteps {
 
@@ -19,19 +20,19 @@ public class LoginSteps {
     @Step
     public void goToLoginPage(){
         homepage.clickMyAccount();
-        homepage.clickLoginLink();
+        homepage.clickLoginButton();
     }
 
     @Step
-    public void loginUser(String email, String password){
-        loginPage.setEmailField(email);
-        loginPage.setPassField(password);
+    public void loginUser(String USER_NAME, String USER_PASS){
+        loginPage.setEmailField(Credentials.USER_NAME);
+        loginPage.setPassField(Credentials.USER_PASS);
         loginPage.clickLoginButton();
     }
 
     @Step
     public void checkUserIsLoggedIn(){
-        myAccountPage.checkLoggedIn("asdasda asdasd");
+        myAccountPage.checkLoggedIn("rserbanescu");
     }
 
     @Step
