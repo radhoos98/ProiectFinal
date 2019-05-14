@@ -8,11 +8,11 @@ import net.thucydides.core.pages.PageObject;
 @DefaultUrl("http://qa2.fasttrackit.org:8008/")
 public class MyAccountPage extends PageObject {
 
-    @FindBy(css = ".hello strong")
+    @FindBy(css = "div.woocommerce-MyAccount-content p strong")
     private WebElementFacade helloMessage;
 
 
     public void checkLoggedIn(String userName) {
-        helloMessage.shouldContainText("Hello, " + userName + "!");
+        helloMessage.shouldContainText("Hello, " + userName );
     }
 }

@@ -12,8 +12,13 @@ public class Homepage extends PageObject {
     @FindBy(id ="menu-item-64")
     private WebElementFacade myAccountButton;
 
-    @FindBy(css = "button.woodcommerce-Button-button")
+    @FindBy(css = "button.woocommerce-Button.button[value='Login'")
     private WebElementFacade loginButton;
+
+    @FindBy(css="button.woocommerce-Button.button[value='Register'")
+    private WebElementFacade registerButton;
+
+
 
     public void clickMyAccount(){
         clickOn(myAccountButton);
@@ -21,6 +26,9 @@ public class Homepage extends PageObject {
 
     public void clickLoginButton(){
         clickOn(loginButton);
+    }
+    public void clickRegisterButton(){
+      clickOn(registerButton);
     }
 
 }
