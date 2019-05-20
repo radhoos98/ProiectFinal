@@ -10,24 +10,24 @@ import org.fasttrackit.utils.Credentials;
 public class LoginPage extends PageObject {
 
 
-    @FindBy(id = "username.woocommerce-Input.woocommerce-Input--text.input-text")
+    @FindBy(css = ".woocommerce-form-row  #username")
     private WebElementFacade emailField;
 
-    @FindBy(id = "password.woocommerce-Input.woocommerce-Input--text.input-text")
+    @FindBy(css = ".woocommerce-form-row  #password")
     private WebElementFacade passField;
 
-    @FindBy(css = "button.woocommerce-Button.button")
+    @FindBy(css = "button.woocommerce-Button.button[name='login']")
     private WebElementFacade loginButton;
 
     @FindBy(css = "ul.woocommerce-error")
     private WebElementFacade errorMessage;
 
     public void setEmailField(String USER_NAME){
-        typeInto(emailField, Credentials.USER_NAME);
+        typeInto(emailField, USER_NAME);
     }
 
     public void setPassField(String USER_PASS){
-        typeInto(passField,Credentials.USER_PASS);
+        typeInto(passField,USER_PASS);
     }
 
     public void clickLoginButton(){
@@ -36,7 +36,7 @@ public class LoginPage extends PageObject {
 
 
     public void checkErrorMessage(){
-        errorMessage.shouldContainText("Invalid login or password.");
+        errorMessage.shouldContainText("Lost your password?");
     }
 
     public void checkUserIsOnLoginPage(){

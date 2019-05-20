@@ -13,6 +13,6 @@ public class MyAccountPage extends PageObject {
 
 
     public void checkLoggedIn(String userName) {
-        helloMessage.shouldContainText("Hello, " + userName );
+        helloMessage.shouldContainText  ( userName );
     }
 }

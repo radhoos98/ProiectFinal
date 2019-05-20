@@ -36,7 +36,7 @@ public class LoginTest {
     public void loginWithInvalidPassword(){
         loginSteps.navigateToHomepage();
         loginSteps.goToLoginPage();
-        loginSteps.loginUser("USER_NAME","123asdasd");
+        loginSteps.loginUser("rserbanescu@yahoo.com","123asdasd");
         loginSteps.checkUserNotLoggedIn();
     }
 

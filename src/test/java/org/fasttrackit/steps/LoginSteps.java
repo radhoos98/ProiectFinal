@@ -20,13 +20,13 @@ public class LoginSteps {
     @Step
     public void goToLoginPage(){
         homepage.clickMyAccount();
-        homepage.clickLoginButton();
+
     }
 
     @Step
-    public void loginUser(String USER_NAME, String USER_PASS){
-        loginPage.setEmailField(Credentials.USER_NAME);
-        loginPage.setPassField(Credentials.USER_PASS);
+    public void loginUser(String username, String userpass){
+        loginPage.setEmailField(username);
+        loginPage.setPassField(userpass);
         loginPage.clickLoginButton();
     }
 
