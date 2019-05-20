@@ -3,14 +3,12 @@ package org.fasttrackit.steps;
 import net.thucydides.core.annotations.Step;
 import org.fasttrackit.pages.Homepage;
 import org.fasttrackit.pages.LoginPage;
-import org.fasttrackit.pages.MyAccountPage;
 import org.fasttrackit.pages.ProductPage;
 
 public class ProductSteps {
 
     Homepage homepage;
     LoginPage loginPage;
-    MyAccountPage myAccountPage;
     ProductPage productPage;
 
     @Step
@@ -43,11 +41,13 @@ public class ProductSteps {
 
     @Step
     public void goToSearchButton(){
+
         productPage.clickSearchButton();
     }
 
     @Step
     public void goToBeanieButton(){
+
         productPage.clickBeanieButton();
     }
 
@@ -58,11 +58,13 @@ public class ProductSteps {
 
     @Step
     public void goToAddToCartButton(){
+
         productPage.clickAddToCartButton();
     }
 
     @Step
     public void checkConfirmationMessage(){
+
         productPage.checkConfirmationMessage();
     }
 
