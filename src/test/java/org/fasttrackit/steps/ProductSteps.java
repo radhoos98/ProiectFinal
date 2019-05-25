@@ -52,8 +52,8 @@ public class ProductSteps {
     }
 
     @Step
-    public void setQuantityField(){
-        productPage.setQuantityField("1");
+    public void setQuantityField(String Quantity){
+        productPage.setQuantityField(Quantity);
     }
 
     @Step
@@ -65,7 +65,11 @@ public class ProductSteps {
     @Step
     public void checkConfirmationMessage(){
 
-        productPage.checkConfirmationMessage();
+        productPage.checkConfirmationMessage("Beanie");
+    }
+    @Step
+    public void checkConfirmationMessageIsNotDisplayed(){
+        productPage.checkConfirmationMessageIsNotDisplayed();
     }
 
 }
