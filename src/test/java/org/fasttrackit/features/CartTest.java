@@ -26,6 +26,7 @@ public class CartTest {
     public void addToCart() {
         loginSteps.navigateToHomepage();
         loginSteps.goToLoginPage();
+        cartSteps.navigateToCartPage();
     }
 
 }
