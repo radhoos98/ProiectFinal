@@ -9,26 +9,26 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("http://qa2.fasttrackit.org:8008/")
 public class Homepage extends PageObject {
 
-    @FindBy(id ="menu-item-64")
+    @FindBy(id = "menu-item-64")
     private WebElementFacade myAccountButton;
 
     @FindBy(css = "button.woocommerce-Button.button[value='Login'")
     private WebElementFacade loginButton;
 
-    @FindBy(css="button.woocommerce-Button.button[value='Register'")
+    @FindBy(css = "button.woocommerce-Button.button[value='Register'")
     private WebElementFacade registerButton;
 
 
-
-    public void clickMyAccount(){
+    public void clickMyAccount() {
         clickOn(myAccountButton);
     }
 
-    public void clickLoginButton(){
+    public void clickLoginButton() {
         clickOn(loginButton);
     }
-    public void clickRegisterButton(){
-      clickOn(registerButton);
+
+    public void clickRegisterButton() {
+        clickOn(registerButton);
     }
 
 }

@@ -42,4 +42,5 @@ public class LoginPage extends PageObject {
     public void checkUserIsOnLoginPage(){
         loginButton.shouldBeVisible();
     }
+
 }

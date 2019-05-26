@@ -44,6 +44,42 @@ public class MyAccountPage extends PageObject {
     @FindBy(css = "button[value='Save changes']")
     private WebElementFacade saveChangesButton;
 
+    @FindBy(css = "a[href*='address=billing']")
+    private WebElementFacade editBillingButton;
+
+    @FindBy(id="billing_first_name")
+    private WebElementFacade billingFirstNameField;
+
+    @FindBy(id = "billing_last_name")
+    private WebElementFacade billingLastNameField;
+
+    @FindBy(id = "billing_country")
+    private WebElementFacade billingSelectCountry;
+
+    @FindBy(css ="input[aria-activedescendant='select2-billing_country-result-rcbo-RO']")
+    private WebElementFacade dropdownBillingSelectCountry;
+
+    @FindBy(id = "billing_address_1.input-text")
+    private WebElementFacade billingAddressField;
+
+    @FindBy(id = "billing_address_2.input-text")
+    private WebElementFacade getBillingAddressField2;
+
+    @FindBy(id="billing_city.input-text")
+    private WebElementFacade billingCity;
+
+    @FindBy(id = "select2-billing_state-container")
+    private WebElementFacade billingState;
+
+    @FindBy(id="select2-billing_state-container")
+    private WebElementFacade dropdownBillingState;
+
+    @FindBy(css = "button[name='save_address']")
+    private WebElementFacade saveAddressButton;
+
+    @FindBy(css = "div.woocommerce-message")
+    private WebElementFacade changeAddressMessage;
+
 
     public void checkLoggedIn(String userName) {
         helloMessage.shouldContainText  ( userName );
@@ -83,6 +119,47 @@ public class MyAccountPage extends PageObject {
     public void checkAccountDetails(){
         saveChangesButton.shouldBeVisible();
     }
+    public void clickEditBillingButton(){
+        clickOn(editBillingButton);
+    }
+    public void setBillingFirstNameField(){
+        typeInto(billingFirstNameField,"Serbanescu");
+    }
+    public void setBillingLastNameField() {
+        typeInto(billingLastNameField, "Radu");
+    }
+    public void setBillingSelectCountry(){
+        clickOn(billingSelectCountry);
+    }
+    public void setDropdownBillingSelectCountry(){
+        clickOn(dropdownBillingSelectCountry);
+    }
+    public void setBillingAddressField(){
+        typeInto(billingAddressField,"o alta adresa");
+    }
+    public void setGetBillingAddressField2(){
+        typeInto(getBillingAddressField2,"alt apartament");
+    }
+    public void setBillingCity(){
+        typeInto(billingCity,"Ciudad de Cornesti");
+    }
+    public void setBillingState(){
+        clickOn(billingState);
+    }
+    public void setDropdownBillingState(){
+        clickOn(dropdownBillingState);
+    }
+    public void clickSaveAddressButton(){
+        clickOn(saveAddressButton);
+    }
+    public void changeAddressMessage(){
+        changeAddressMessage.shouldContainText("Address changed successfully");
+
+    }
+
+
+
+
 
 
 

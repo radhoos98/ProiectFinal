@@ -36,7 +36,7 @@ public class ProductTest {
             productSteps.goToSearchProduct();
             productSteps.goToSearchButton();
             productSteps.goToBeanieButton();
-            productSteps.setQuantityField("2");
+            productSteps.setQuantityField("1");
             productSteps.goToAddToCartButton();
             productSteps.checkConfirmationMessage();
         }
