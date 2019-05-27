@@ -11,14 +11,8 @@ public class MyAccountPage extends PageObject {
     @FindBy(css = "#post-7 >div >div>div p:nth-child(1) >strong:nth-child(1)")
     private WebElementFacade helloMessage;
 
-    @FindBy(css="li.woocommerce-MyAccount-navigation-link a[href$='page_id=7]")
-    private WebElementFacade dashboardButton;
-
     @FindBy(css = "li.woocommerce-MyAccount-navigation-link a[href$='7&orders']")
     private WebElementFacade ordersButton;
-
-    @FindBy(css = "li.woocommerce-MyAccount-navigation-link a[href$='7&downloads']")
-    private WebElementFacade downloadsButton;
 
     @FindBy(css = "li.woocommerce-MyAccount-navigation-link a[href$='address']")
     private WebElementFacade adressesButton;
@@ -26,11 +20,21 @@ public class MyAccountPage extends PageObject {
     @FindBy(css="li.woocommerce-MyAccount-navigation-link a[href$='account']")
     private WebElementFacade accountDetailsButton;
 
+    @FindBy(id = "account_first_name")
+    private WebElementFacade accountFirstNameFied;
+
+    @FindBy(id = "account_last_name")
+    private WebElementFacade accountLastNameField;
+
+    @FindBy(id = "password_current")
+    private WebElementFacade currentPasswordField;
+
+    @FindBy(css = "button[value='Save changes'")
+    private WebElementFacade acountSaveChanges;
+
+
     @FindBy(css="li.woocommerce-MyAccount-navigation-link a[href*='logout&_wpnonce']")
     private WebElementFacade logOutButton;
-
-    @FindBy(css="p a[href*='page_id=7&edit-address']")
-    private WebElementFacade dashboardMessage;
 
     @FindBy(css = "a.woocommerce-Button.button")
     private WebElementFacade goShopButton;
@@ -42,7 +46,7 @@ public class MyAccountPage extends PageObject {
     private WebElementFacade addressesMesage;
 
     @FindBy(css = "button[value='Save changes']")
-    private WebElementFacade saveChangesButton;
+    private WebElementFacade addressesSaveChangesButton;
 
     @FindBy(css = "a[href*='address=billing']")
     private WebElementFacade editBillingButton;
@@ -53,11 +57,11 @@ public class MyAccountPage extends PageObject {
     @FindBy(id = "billing_last_name")
     private WebElementFacade billingLastNameField;
 
-    @FindBy(id = "billing_country")
-    private WebElementFacade billingSelectCountry;
+    @FindBy(id = "select2-billing_country-container")
+    private WebElementFacade countryDropdown;
 
-    @FindBy(css ="input[aria-activedescendant='select2-billing_country-result-rcbo-RO']")
-    private WebElementFacade dropdownBillingSelectCountry;
+    @FindBy(css ="billing_country_field span.select2-selection__arrow [role='presentation']")
+    private WebElementFacade countryField;
 
     @FindBy(id = "billing_address_1.input-text")
     private WebElementFacade billingAddressField;
@@ -78,15 +82,23 @@ public class MyAccountPage extends PageObject {
     private WebElementFacade saveAddressButton;
 
     @FindBy(css = "div.woocommerce-message")
-    private WebElementFacade changeAddressMessage;
+    private WebElementFacade changesMessage;
+
+    @FindBy(id = "password_1")
+    private WebElementFacade newPasswordField;
+
+    @FindBy(id = "password_2")
+    private WebElementFacade confirmNewPasswordField;
+
+    @FindBy(css = "div[aria-live='polite']")
+    private WebElementFacade weakPasswordMessage;
+
 
 
     public void checkLoggedIn(String userName) {
         helloMessage.shouldContainText  ( userName );
     }
-    public void clickODashboard(){
-        clickOn(dashboardButton);
-    }
+
     public void clickOrders(){
         clickOn(ordersButton);
     }
@@ -96,18 +108,27 @@ public class MyAccountPage extends PageObject {
     public void clickAccountDetails(){
         clickOn(accountDetailsButton);
     }
+    public void setAccountFirstNameFied(){
+        typeInto(accountFirstNameFied,"Io");
+    }
+    public void setAccountLastNameField(){
+        typeInto(accountLastNameField,"Acelasi");
+    }
+    public void setCurrentPasswordField(){
+        typeInto(currentPasswordField,"");
+    }
+    public void enterCurrentPassword(){
+        typeInto(currentPasswordField,"CBa4567890&Z");
+    }
+    public void clickAccountSaveChanges(){
+        clickOn(acountSaveChanges);
+    }
+
     public void clickLogOut(){
         clickOn(logOutButton);
     }
-    public void clickDownloads(){
-        clickOn(downloadsButton);
-    }
 
-    public void checkDashboardMessage(){
-        dashboardMessage.shouldContainText("shipping and billing addresses");
-
-    }
-    public void checkNoOrders(){
+     public void checkNoOrders(){
         goShopButton.shouldBeVisible();
     }
     public void checkOrders(){
@@ -117,7 +138,7 @@ public class MyAccountPage extends PageObject {
         addressesMesage.shouldContainText("Billing address");
     }
     public void checkAccountDetails(){
-        saveChangesButton.shouldBeVisible();
+        addressesSaveChangesButton.shouldBeVisible();
     }
     public void clickEditBillingButton(){
         clickOn(editBillingButton);
@@ -128,11 +149,12 @@ public class MyAccountPage extends PageObject {
     public void setBillingLastNameField() {
         typeInto(billingLastNameField, "Radu");
     }
-    public void setBillingSelectCountry(){
-        clickOn(billingSelectCountry);
+    public void clickCountryField(){
+        clickOn(countryField);
     }
-    public void setDropdownBillingSelectCountry(){
-        clickOn(dropdownBillingSelectCountry);
+    public void selectDropdownValues(){
+        countryDropdown.selectByVisibleText("Romania");
+//        (countryDropdown.getSelectedVisibleTextValue(),is("Romania"));
     }
     public void setBillingAddressField(){
         typeInto(billingAddressField,"o alta adresa");
@@ -153,9 +175,27 @@ public class MyAccountPage extends PageObject {
         clickOn(saveAddressButton);
     }
     public void changeAddressMessage(){
-        changeAddressMessage.shouldContainText("Address changed successfully");
+        changesMessage.shouldContainText("Address changed successfully");
 
     }
+    public void changeAccountDetailsMessage(){
+        changesMessage.shouldContainText("Account details changed successfully");
+    }
+
+    public void setNewPasswordField(){
+        typeInto(newPasswordField,"A123456!b???");
+    }
+    public void setConfirmNewPasswordField(){
+        typeInto(confirmNewPasswordField,"A123456!b???");
+    }
+    public void setWeakPassword(){
+        typeInto(newPasswordField,"1234");
+    }
+    public void weakPasswordMessage(){
+        weakPasswordMessage.shouldContainText("Very weak");
+    }
+
+
 
 
 

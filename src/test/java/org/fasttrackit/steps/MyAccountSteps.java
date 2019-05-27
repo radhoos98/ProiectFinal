@@ -17,11 +17,6 @@ public class MyAccountSteps {
     }
 
     @Step
-    public void goToDashboard() {
-        myAccountPage.clickODashboard();
-    }
-
-    @Step
     public void goToOrders() {
         myAccountPage.clickOrders();
     }
@@ -36,10 +31,7 @@ public class MyAccountSteps {
         myAccountPage.clickAccountDetails();
     }
 
-    @Step
-    public void goToDownloads() {
-        myAccountPage.clickDownloads();
-    }
+
 
     @Step
     public void goToLogout() {
@@ -68,12 +60,12 @@ public class MyAccountSteps {
         myAccountPage.setBillingLastNameField();
     }
     @Step
-    public void setBillingSelectCountry(){
-        myAccountPage.setBillingSelectCountry();
+    public void selectDropdownValues(){
+        myAccountPage.selectDropdownValues();
     }
     @Step
-    public void setDropdownBillingSelectCountry(){
-        myAccountPage.setDropdownBillingSelectCountry();
+    public void clickCountryField(){
+        myAccountPage.clickCountryField();
     }
     @Step
     public void setBillingAddressField(){
@@ -94,5 +86,47 @@ public class MyAccountSteps {
     @Step
     public void changeAddressMessage(){
         myAccountPage.checkAdressesMessage();
+    }
+    @Step
+    public void setAccountFirstName(){
+        myAccountPage.setAccountFirstNameFied();
+    }
+    @Step
+    public void setAccountLastName(){
+        myAccountPage.setAccountLastNameField();
+    }
+    @Step
+    public void setCurrentPassword(){
+        myAccountPage.setCurrentPasswordField();
+    }
+    @Step
+    public void clickAccountSaveChanges(){
+        myAccountPage.clickAccountSaveChanges();
+    }
+    @Step
+    public void changeAccountDetailsMessage(){
+        myAccountPage.changeAccountDetailsMessage();
+    }
+    @Step
+    public void setNewPassword(){
+        myAccountPage.setNewPasswordField();
+    }
+    @Step
+    public void confirmNewPassword(){
+        myAccountPage.setConfirmNewPasswordField();
+    }
+    @Step
+    public void enterCurrentPassword(){
+        myAccountPage.enterCurrentPassword();
+    }
+    @Step
+    public void setWeakPassword(){
+        myAccountPage.setWeakPassword();
+
+    }
+    @Step
+    public void weakPasswordMessage(){
+        myAccountPage.weakPasswordMessage();
+
     }
 }

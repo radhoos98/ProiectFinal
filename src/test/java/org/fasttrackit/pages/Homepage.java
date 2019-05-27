@@ -12,10 +12,10 @@ public class Homepage extends PageObject {
     @FindBy(id = "menu-item-64")
     private WebElementFacade myAccountButton;
 
-    @FindBy(css = "button.woocommerce-Button.button[value='Login'")
+    @FindBy(css = "button.woocommerce-Button.button[value='Login']")
     private WebElementFacade loginButton;
 
-    @FindBy(css = "button.woocommerce-Button.button[value='Register'")
+    @FindBy(css = "button.woocommerce-Button.button[value='Register']")
     private WebElementFacade registerButton;
 
 
