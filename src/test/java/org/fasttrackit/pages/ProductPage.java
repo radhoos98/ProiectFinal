@@ -19,6 +19,9 @@ public class ProductPage extends PageObject {
     @FindBy(css = "a[href$='product=beanie']")
     private WebElementFacade beanieButton;
 
+    @FindBy(css = "a[href$='logo'")
+    private WebElementFacade beanieWithLogoButton;
+
     @FindBy(css = "input[id^='quantity']")
     private WebElementFacade quantityField;
 
@@ -43,6 +46,9 @@ public class ProductPage extends PageObject {
 
     public void clickBeanieButton() {
         clickOn(beanieButton);
+    }
+    public void clickBeanieWithLogoButton(){
+        clickOn(beanieWithLogoButton);
     }
 
     public void setQuantityField(String Quantity) {

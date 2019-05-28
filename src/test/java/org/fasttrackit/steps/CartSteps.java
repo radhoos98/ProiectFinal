@@ -30,4 +30,22 @@ public class CartSteps {
     public void goToCheckout(){
         cartPage.clickCheckoutButton();
     }
-}
+    @Step
+    public void goToCart(){
+        cartPage.clickCartButton();
+    }
+    @Step
+    public void verifyProceedToCheckout(){
+        cartPage.verifyProceedToCheckout();
+    }
+
+   @Step
+    public void waitAbit(){
+        waitAbit();
+   }
+   @Step
+    public void close(){
+        close();
+   }
+    }
+

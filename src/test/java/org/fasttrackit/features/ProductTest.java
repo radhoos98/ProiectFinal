@@ -42,7 +42,7 @@ public class ProductTest {
         }
 
         @Test
-        public void checkProductwithInvalidQuantity(){
+        public void checkProductWithInvalidQuantity(){
             loginSteps.navigateToHomepage();
             productSteps.goToSearchIcon();
             productSteps.goToSearchProduct();
@@ -54,7 +54,7 @@ public class ProductTest {
         }
 
         @Test
-        public void checProductwithAlphabeticCharactersQuantity(){
+        public void checProductWithAlphabeticCharactersQuantity(){
             loginSteps.navigateToHomepage();
             productSteps.goToSearchIcon();
             productSteps.goToSearchProduct();
