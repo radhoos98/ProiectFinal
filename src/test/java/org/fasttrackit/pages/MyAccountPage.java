@@ -5,7 +5,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 
-@DefaultUrl("http://qa2.fasttrackit.org:8008/")
+import java.time.temporal.ValueRange;
+
+@DefaultUrl("http://qa2.fasttrackit.org:8008/?page_id=7")
 public class MyAccountPage extends PageObject {
 
     @FindBy(css = "#post-7 >div >div>div p:nth-child(1) >strong:nth-child(1)")
@@ -17,7 +19,7 @@ public class MyAccountPage extends PageObject {
     @FindBy(css = "li.woocommerce-MyAccount-navigation-link a[href$='address']")
     private WebElementFacade adressesButton;
 
-    @FindBy(css="li.woocommerce-MyAccount-navigation-link a[href$='account']")
+    @FindBy(css = "li.woocommerce-MyAccount-navigation-link a[href$='account']")
     private WebElementFacade accountDetailsButton;
 
     @FindBy(id = "account_first_name")
@@ -33,7 +35,7 @@ public class MyAccountPage extends PageObject {
     private WebElementFacade acountSaveChanges;
 
 
-    @FindBy(css="li.woocommerce-MyAccount-navigation-link a[href*='logout&_wpnonce']")
+    @FindBy(css = "li.woocommerce-MyAccount-navigation-link a[href*='logout&_wpnonce']")
     private WebElementFacade logOutButton;
 
     @FindBy(css = "a.woocommerce-Button.button")
@@ -51,32 +53,35 @@ public class MyAccountPage extends PageObject {
     @FindBy(css = "a[href*='address=billing']")
     private WebElementFacade editBillingButton;
 
-    @FindBy(id="billing_first_name")
+    @FindBy(id = "billing_first_name")
     private WebElementFacade billingFirstNameField;
 
     @FindBy(id = "billing_last_name")
     private WebElementFacade billingLastNameField;
 
-    @FindBy(id = "select2-billing_country-container")
+    @FindBy(id = "billing_phone")
+    private WebElementFacade billingPhoneField;
+
+    @FindBy(id = "billing_country")
     private WebElementFacade countryDropdown;
 
-    @FindBy(css ="billing_country_field span.select2-selection__arrow [role='presentation']")
+    @FindBy(css = "billing_country_field span.select2-selection__arrow [role='presentation']")
     private WebElementFacade countryField;
 
-    @FindBy(id = "billing_address_1.input-text")
+    @FindBy(css = "input[name='billing_address_1']")
     private WebElementFacade billingAddressField;
 
-    @FindBy(id = "billing_address_2.input-text")
+    @FindBy(css = "input[name='billing_address_2']")
     private WebElementFacade getBillingAddressField2;
 
-    @FindBy(id="billing_city.input-text")
+    @FindBy(css = "input[name='billing_city']")
     private WebElementFacade billingCity;
 
-    @FindBy(id = "select2-billing_state-container")
-    private WebElementFacade billingState;
+    @FindBy(css = "select[name='billing_state']")
+    private WebElementFacade stateDropdown;
 
-    @FindBy(id="select2-billing_state-container")
-    private WebElementFacade dropdownBillingState;
+    @FindBy(id = "select2-billing_state-container")
+    private WebElementFacade billingStatefield;
 
     @FindBy(css = "button[name='save_address']")
     private WebElementFacade saveAddressButton;
@@ -93,114 +98,150 @@ public class MyAccountPage extends PageObject {
     @FindBy(css = "div[aria-live='polite']")
     private WebElementFacade weakPasswordMessage;
 
+    @FindBy(css = "input[name='billing_postcode']")
+    private WebElementFacade zipField;
 
+    @FindBy(css = "input[name='billing_email']")
+    private WebElementFacade emailField;
+
+    @FindBy(css = "ul.woocommerce-error")
+    private WebElementFacade errorZipCode;
 
     public void checkLoggedIn(String userName) {
-        helloMessage.shouldContainText  ( userName );
+        helloMessage.shouldContainText(userName);
     }
 
-    public void clickOrders(){
+    public void clickOrders() {
         clickOn(ordersButton);
     }
-    public void clickAdresses(){
+
+    public void clickAdresses() {
         clickOn(adressesButton);
     }
-    public void clickAccountDetails(){
+
+    public void clickAccountDetails() {
         clickOn(accountDetailsButton);
     }
-    public void setAccountFirstNameFied(){
-        typeInto(accountFirstNameFied,"Io");
+
+    public void setAccountFirstNameFied() {
+        typeInto(accountFirstNameFied, "Io");
     }
-    public void setAccountLastNameField(){
-        typeInto(accountLastNameField,"Acelasi");
+
+    public void setAccountLastNameField() {
+        typeInto(accountLastNameField, "Acelasi");
     }
-    public void setCurrentPasswordField(){
-        typeInto(currentPasswordField,"");
+
+    public void setCurrentPasswordField() {
+        typeInto(currentPasswordField, "");
     }
-    public void enterCurrentPassword(){
-        typeInto(currentPasswordField,"CBa4567890&Z");
+
+    public void enterCurrentPassword() {
+        typeInto(currentPasswordField, "CBa4567890&Z");
     }
-    public void clickAccountSaveChanges(){
+
+    public void clickAccountSaveChanges() {
         clickOn(acountSaveChanges);
     }
 
-    public void clickLogOut(){
+    public void clickLogOut() {
         clickOn(logOutButton);
     }
 
-     public void checkNoOrders(){
+    public void checkNoOrders() {
         goShopButton.shouldBeVisible();
     }
-    public void checkOrders(){
+
+    public void checkOrders() {
         ordersTable.shouldBeVisible();
     }
-    public void checkAdressesMessage(){
+
+    public void checkAdressesMessage() {
         addressesMesage.shouldContainText("Billing address");
     }
-    public void checkAccountDetails(){
+
+    public void checkAccountDetails() {
         addressesSaveChangesButton.shouldBeVisible();
     }
-    public void clickEditBillingButton(){
+
+    public void clickEditBillingButton() {
         clickOn(editBillingButton);
     }
-    public void setBillingFirstNameField(){
-        typeInto(billingFirstNameField,"Serbanescu");
+
+    public void setBillingFirstNameField(String FirstName) {
+        typeInto(billingFirstNameField, FirstName);
     }
-    public void setBillingLastNameField() {
-        typeInto(billingLastNameField, "Radu");
+
+    public void setBillingLastNameField(String LastName) {
+        typeInto(billingLastNameField, LastName);
     }
-    public void clickCountryField(){
-        clickOn(countryField);
+
+    public void selectCountry() {
+        countryDropdown.selectByValue("RO");
     }
-    public void selectDropdownValues(){
-        countryDropdown.selectByVisibleText("Romania");
-//        (countryDropdown.getSelectedVisibleTextValue(),is("Romania"));
+
+    public void selectState() {
+        stateDropdown.selectByValue("CJ");
+
     }
-    public void setBillingAddressField(){
-        typeInto(billingAddressField,"o alta adresa");
+
+    public void setBillingPhoneField(String Number) {
+        typeInto(billingPhoneField, Number);
     }
-    public void setGetBillingAddressField2(){
-        typeInto(getBillingAddressField2,"alt apartament");
+
+    public void setBillingAddressField(String Adresa) {
+        typeInto(billingAddressField, Adresa);
     }
-    public void setBillingCity(){
-        typeInto(billingCity,"Ciudad de Cornesti");
+
+    public void setGetBillingAddressField2(String Adresa2) {
+        typeInto(getBillingAddressField2, Adresa2);
     }
-    public void setBillingState(){
-        clickOn(billingState);
+
+    public void setBillingCity(String Localitate) {
+        typeInto(billingCity, Localitate);
     }
-    public void setDropdownBillingState(){
-        clickOn(dropdownBillingState);
-    }
-    public void clickSaveAddressButton(){
+
+
+    public void clickSaveAddressButton() {
         clickOn(saveAddressButton);
     }
-    public void changeAddressMessage(){
+
+    public void changeAddressMessage() {
         changesMessage.shouldContainText("Address changed successfully");
 
     }
-    public void changeAccountDetailsMessage(){
+
+    public void changeAccountDetailsMessage() {
         changesMessage.shouldContainText("Account details changed successfully");
     }
 
-    public void setNewPasswordField(){
-        typeInto(newPasswordField,"A123456!b???");
+    public void setNewPasswordField(String NewPassword) {
+        typeInto(newPasswordField, NewPassword);
     }
-    public void setConfirmNewPasswordField(){
-        typeInto(confirmNewPasswordField,"A123456!b???");
+
+    public void setConfirmNewPasswordField(String NewPassword) {
+        typeInto(confirmNewPasswordField, NewPassword);
     }
-    public void setWeakPassword(){
-        typeInto(newPasswordField,"1234");
+
+    public void setWeakPassword() {
+        typeInto(newPasswordField, "1234");
     }
-    public void weakPasswordMessage(){
+
+    public void weakPasswordMessage() {
         weakPasswordMessage.shouldContainText("Very weak");
     }
 
+    public void setZipField(String Value) {
+        typeInto(zipField, Value);
+    }
 
+    public void completeEmailField(String Email) {
+        typeInto(emailField, Email);
+    }
 
+    public void errorZipcodeMessage() {
+        errorZipCode.shouldContainText("Please enter a valid postcode / ZIP.");
 
-
-
-
+    }
 
 
 }

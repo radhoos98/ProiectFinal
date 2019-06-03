@@ -3,7 +3,6 @@ package org.fasttrackit.features;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.fasttrackit.pages.Homepage;
 import org.fasttrackit.steps.LoginSteps;
 import org.fasttrackit.steps.MyAccountSteps;
 import org.fasttrackit.utils.Credentials;
@@ -68,15 +67,15 @@ public class MyAccountTest {
         loginSteps.loginUser(Credentials.USER_NAME, Credentials.USER_PASS);
         myAccountSteps.goToAdresses();
         myAccountSteps.goToEditBillingButton();
-        myAccountSteps.setBillingFirstNameField();
-        myAccountSteps.setBillingLastNameField();
-//        myAccountSteps.clickCountryField();
-//        myAccountSteps.selectDropdownValues();
-//        myAccountSteps.setBillingAddressField();
-//        myAccountSteps.setBillingAddressField2();
-//        myAccountSteps.setBillingCity();
-//        myAccountSteps.clickSaveAddress();
-//        myAccountSteps.changeAddressMessage();
+        myAccountSteps.setBillingFirstNameField("Alin");
+        myAccountSteps.setBillingLastNameField("Salin");
+        myAccountSteps.selectCountry();
+        myAccountSteps.setBillingAddressField("Undeva");
+        myAccountSteps.setBillingAddressField2("Departe");
+        myAccountSteps.setBillingCity("Neverland");
+        myAccountSteps.selectState();
+        myAccountSteps.clickSaveAddress();
+        myAccountSteps.changeAddressMessage();
     }
     @Test
     public void changeAccountFirstNameAndLastName(){
@@ -101,8 +100,8 @@ public class MyAccountTest {
         myAccountSteps.setAccountFirstName();
         myAccountSteps.setAccountLastName();
         myAccountSteps.enterCurrentPassword();
-        myAccountSteps.setNewPassword();
-        myAccountSteps.confirmNewPassword();
+        myAccountSteps.setNewPassword("@mnbvcxz!al@");
+        myAccountSteps.confirmNewPassword("@mnbvcxz!al@");
         myAccountSteps.clickAccountSaveChanges();
         myAccountSteps.changeAccountDetailsMessage();
 
@@ -119,6 +118,25 @@ public class MyAccountTest {
         myAccountSteps.weakPasswordMessage();
 
     }
+   @Test
+    public void changeAccountDetailsWithIncorectZipCodeCharacters(){
+       loginSteps.navigateToHomepage();
+       loginSteps.goToLoginPage();
+       loginSteps.loginUser(Credentials.USER_NAME,Credentials.USER_PASS);
+       myAccountSteps.goToAdresses();
+       myAccountSteps.goToEditBillingButton();
+       myAccountSteps.setBillingFirstNameField("IONEL");
+       myAccountSteps.setBillingLastNameField("IONELULE");
+       myAccountSteps.selectCountry();
+       myAccountSteps.setBillingAddressField("ACASA");
+       myAccountSteps.setBillingAddressField2("LA MINE");
+       myAccountSteps.setBillingCity("RIO DEL MIO");
+       myAccountSteps.selectState();
+       myAccountSteps.setZipcodeField("/';;],.;@'");
+       myAccountSteps.clickSaveAddress();
+       myAccountSteps.zipcodeErrorMessage();
+
+   }
 
 }
 

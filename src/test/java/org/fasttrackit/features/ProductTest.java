@@ -33,7 +33,7 @@ public class ProductTest {
         public void checkProductWithValidQuantity(){
             loginSteps.navigateToHomepage();
             productSteps.goToSearchIcon();
-            productSteps.goToSearchProduct();
+            productSteps.goToSearchProduct("Beanie");
             productSteps.goToSearchButton();
             productSteps.goToBeanieButton();
             productSteps.setQuantityField("1");
@@ -45,7 +45,7 @@ public class ProductTest {
         public void checkProductWithInvalidQuantity(){
             loginSteps.navigateToHomepage();
             productSteps.goToSearchIcon();
-            productSteps.goToSearchProduct();
+            productSteps.goToSearchProduct("Beanie");
             productSteps.goToSearchButton();
             productSteps.goToBeanieButton();
             productSteps.setQuantityField("-11");
@@ -57,7 +57,7 @@ public class ProductTest {
         public void checProductWithAlphabeticCharactersQuantity(){
             loginSteps.navigateToHomepage();
             productSteps.goToSearchIcon();
-            productSteps.goToSearchProduct();
+            productSteps.goToSearchProduct("Be");
             productSteps.goToSearchButton();
             productSteps.goToBeanieButton();
             productSteps.setQuantityField("e");

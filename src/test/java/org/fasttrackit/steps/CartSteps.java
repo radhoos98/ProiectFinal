@@ -2,50 +2,63 @@ package org.fasttrackit.steps;
 
 import net.thucydides.core.annotations.Step;
 import org.fasttrackit.pages.*;
-import org.fasttrackit.utils.Credentials;
+
 
 
 public class CartSteps {
-    ProductPage productPage;
-    SearchResultPage searchResultPage;
     CartPage cartPage;
 
     @Step
     public void navigateToCartPage() {
         cartPage.open();
     }
+
     @Step
-    public void goToCalculateShipping(){
+    public void goToCalculateShipping() {
         cartPage.clickCalculateShippingButton();
     }
+
     @Step
-    public void goToQuantityField(){
+    public void goToQuantityField() {
         cartPage.doubleQuantity();
     }
+
     @Step
-    public void updateCart(){
+    public void updateCart() {
         cartPage.clickUpdateCartButton();
     }
+
     @Step
-    public void goToCheckout(){
+    public void goToCheckout() {
         cartPage.clickCheckoutButton();
     }
+
     @Step
-    public void goToCart(){
+    public void goToCart() {
         cartPage.clickCartButton();
     }
+
     @Step
-    public void verifyProceedToCheckout(){
+    public void verifyProceedToCheckout() {
         cartPage.verifyProceedToCheckout();
     }
 
-   @Step
-    public void waitAbit(){
-        waitAbit();
-   }
-   @Step
-    public void close(){
-        close();
-   }
+
+
+    @Step
+    public void removeObjects() {
+        cartPage.clickRemoveButton();
     }
+
+    @Step
+    public void checkEmptyCart() {
+        if (!cartPage.isCartEmpty()) {
+            cartPage.open();
+            cartPage.clickRemoveButton();
+        }
+
+    }
+
+
+}
 

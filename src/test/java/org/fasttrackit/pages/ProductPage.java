@@ -22,6 +22,9 @@ public class ProductPage extends PageObject {
     @FindBy(css = "a[href$='logo'")
     private WebElementFacade beanieWithLogoButton;
 
+    @FindBy(css = "article.post-20 [rel=bookmark" )
+    private WebElementFacade beltButton;
+
     @FindBy(css = "input[id^='quantity']")
     private WebElementFacade quantityField;
 
@@ -31,13 +34,24 @@ public class ProductPage extends PageObject {
     @FindBy(css = "div.woocommerce-message")
     private WebElementFacade confirmationMessage;
 
+    @FindBy(css = "article.post-15 [rel=bookmark")
+    private WebElementFacade vNeckTShirtButton;
+
+    @FindBy (css = "select[name='attribute_pa_color']")
+    private WebElementFacade colorDropdown;
+
+    @FindBy (css = "td.value [name='attribute_pa_color'")
+    private WebElementFacade colorDropdownField;
+
+    @FindBy(css = "select[name='attribute_pa_size']")
+    private WebElementFacade sizeDropDown;
 
     public void clickSearchIcon() {
         clickOn(searchIcon);
     }
 
-    public void searchProduct(String Beanie) {
-        typeInto(inputSearchField, "Beanie");
+    public void searchProduct(String Search) {
+        typeInto(inputSearchField,Search);
     }
 
     public void clickSearchButton() {
@@ -46,6 +60,10 @@ public class ProductPage extends PageObject {
 
     public void clickBeanieButton() {
         clickOn(beanieButton);
+    }
+    public void clickBeltButton(){
+        clickOn(beltButton);
+
     }
     public void clickBeanieWithLogoButton(){
         clickOn(beanieWithLogoButton);
@@ -64,6 +82,15 @@ public class ProductPage extends PageObject {
     }
     public void checkConfirmationMessageIsNotDisplayed(){
         confirmationMessage.shouldNotBePresent();
+    }
+    public void clickVNeckTSirtButton(){
+        clickOn(vNeckTShirtButton);
+    }
+    public void selectColor(String Color){
+        colorDropdown.selectByValue(Color);
+    }
+    public void selectSize(String Size){
+        sizeDropDown.selectByValue(Size);
     }
 
 }

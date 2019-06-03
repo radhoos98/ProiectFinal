@@ -4,14 +4,17 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.NoSuchElementException;
 
-@DefaultUrl("http://qa2.fasttrackit.org:8008/?page_id=7")
+import java.util.List;
+
+@DefaultUrl("http://qa2.fasttrackit.org:8008/?page_id=5")
 public class CartPage extends PageObject {
 
     @FindBy(css = "i.fa.fa-shopping-cart")
     private WebElementFacade cartButton;
 
-    @FindBy(css = "div.wc-proceed-to-checkout a[href$='page_id=6")
+    @FindBy(css = ".wc-forward")
     private WebElementFacade checkoutButton;
 
     @FindBy(css = "a.shipping-calculator-button")
@@ -28,6 +31,16 @@ public class CartPage extends PageObject {
 
     @FindBy(id = "place_order")
     private WebElementFacade placeOrderButton;
+
+    @FindBy(css = ".blockOverlay")
+    List<WebElementFacade> overlayElements;
+
+    @FindBy(css = "a.remove")
+    private WebElementFacade removeButton;
+
+    @FindBy(css = "span.cart-count")
+    private WebElementFacade cartCount;
+
 
 
 
@@ -48,17 +61,33 @@ public class CartPage extends PageObject {
     }
 
     public void clickCheckoutButton() {
+        waitABit(1500);
         clickOn(checkoutButton);
     }
 
-    public void verifyProceedToCheckout(){
+    public void verifyProceedToCheckout() {
         placeOrderButton.shouldBePresent();
     }
 
-    public void waitABit(){
-        waitABit(1);
+    public void clickRemoveButton() {
+        waitFor(removeButton);
+        try {
+            while (removeButton.isDisplayed()) {
+                clickOn(removeButton);
+                waitABit(500);
+                getDriver().navigate().refresh();
+            }
+        }catch (NoSuchElementException e){
+            System.out.println("No products in cart");
+        }
+
     }
-    public void close(){
-        close();
+
+    public boolean isCartEmpty() {
+        if (cartCount.containsText("0")) {
+            return true;
+        }
+        return false;
     }
+
 }

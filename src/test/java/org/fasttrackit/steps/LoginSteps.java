@@ -4,13 +4,19 @@ import net.thucydides.core.annotations.Step;
 import org.fasttrackit.pages.Homepage;
 import org.fasttrackit.pages.LoginPage;
 import org.fasttrackit.pages.MyAccountPage;
-import org.fasttrackit.utils.Credentials;
+
 
 public class LoginSteps {
 
     Homepage homepage;
     LoginPage loginPage;
     MyAccountPage myAccountPage;
+
+    @Step
+    public void navigateToMayAccountPage(){
+        myAccountPage.open();
+
+    }
 
     @Step
     public void navigateToHomepage(){

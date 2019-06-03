@@ -1,9 +1,11 @@
 package org.fasttrackit.steps;
 
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.annotations.Step;
 import org.fasttrackit.pages.Homepage;
 import org.fasttrackit.pages.LoginPage;
 import org.fasttrackit.pages.ProductPage;
+import org.yecht.Data;
 
 public class ProductSteps {
 
@@ -35,8 +37,8 @@ public class ProductSteps {
     }
 
     @Step
-    public void goToSearchProduct() {
-        productPage.searchProduct("Beanie");
+    public void goToSearchProduct(String Search) {
+        productPage.searchProduct(Search);
     }
 
     @Step
@@ -73,6 +75,24 @@ public class ProductSteps {
     public void checkConfirmationMessageIsNotDisplayed() {
         productPage.checkConfirmationMessageIsNotDisplayed();
     }
+    @Step
+    public void goToBeltButton(){
+        productPage.clickBeltButton();
+    }
+    @Step
+
+    public void goToVNeckTSirtButton(){
+        productPage.clickVNeckTSirtButton();
+    }
+    @Step
+    public void selectColor(String Color){
+        productPage.selectColor(Color);
+    }
+    @Step
+    public void selectSize(String Size){
+        productPage.selectSize(Size);
+    }
+
 
 
 }
