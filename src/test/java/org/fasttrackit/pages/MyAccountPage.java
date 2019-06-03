@@ -177,11 +177,11 @@ public class MyAccountPage extends PageObject {
     }
 
     public void selectCountry() {
-        countryDropdown.selectByValue("RO");
+        countryDropdown.selectByValue("IT");
     }
 
     public void selectState() {
-        stateDropdown.selectByValue("CJ");
+        stateDropdown.selectByValue("AG");
 
     }
 
