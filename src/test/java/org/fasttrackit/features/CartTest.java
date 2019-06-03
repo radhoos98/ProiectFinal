@@ -112,12 +112,5 @@ public class CartTest {
         checkoutSteps.goToPlaceOrderButton();
         checkoutSteps.getConfirmationMessage();
 
-
-
-
-
-
-
-
     }
 }
