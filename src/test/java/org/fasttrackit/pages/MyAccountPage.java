@@ -107,8 +107,9 @@ public class MyAccountPage extends PageObject {
     @FindBy(css = "ul.woocommerce-error")
     private WebElementFacade errorZipCode;
 
-    public void checkLoggedIn(String userName) {
-        helloMessage.shouldContainText(userName);
+
+    public void confirmationMessage(String UserName) {
+        helloMessage.shouldContainText(UserName);
     }
 
     public void clickOrders() {

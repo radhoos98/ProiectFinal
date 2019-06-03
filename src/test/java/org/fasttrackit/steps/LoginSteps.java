@@ -37,8 +37,8 @@ public class LoginSteps {
     }
 
     @Step
-    public void checkUserIsLoggedIn(){
-        myAccountPage.checkLoggedIn("rserbanescu");
+    public void confirmationMessage(String Username){
+        myAccountPage.confirmationMessage(Username);
     }
 
     @Step
@@ -49,6 +49,14 @@ public class LoginSteps {
     @Step
     public void userStillOnLoginPage(){
         loginPage.checkUserIsOnLoginPage();
+    }
+    @Step
+    public void ErrorAlreadyRegisteredMessage(){
+        loginPage.checkErrorAlreadyRegistered();
+    }
+    @Step
+    public void invalidAddressMessage(){
+        loginPage.checkErrorInvalidAdress();
     }
 
 }

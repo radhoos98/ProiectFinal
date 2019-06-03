@@ -38,6 +38,12 @@ public class LoginPage extends PageObject {
     public void checkErrorMessage(){
         errorMessage.shouldContainText("Lost your password?");
     }
+    public void checkErrorAlreadyRegistered(){
+        errorMessage.shouldContainText("An account is already registered with your email address. Please log in.");
+    }
+    public void checkErrorInvalidAdress(){
+        errorMessage.shouldContainText("Please provide a valid email address.");
+    }
 
     public void checkUserIsOnLoginPage(){
         loginButton.shouldBeVisible();

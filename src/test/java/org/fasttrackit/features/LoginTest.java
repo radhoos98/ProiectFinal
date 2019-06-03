@@ -29,7 +29,7 @@ public class LoginTest {
         loginSteps.navigateToHomepage();
         loginSteps.goToLoginPage();
         loginSteps.loginUser(Credentials.USER_NAME,Credentials.USER_PASS);
-        loginSteps.checkUserIsLoggedIn();
+        loginSteps.confirmationMessage(Credentials.USER_NAME);
     }
 
     @Test

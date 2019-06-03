@@ -164,5 +164,9 @@ public class MyAccountSteps {
     public void completeEmailField(String Email) {
         myAccountPage.completeEmailField(Email);
     }
+    @Step
+    public void confirmationMessage(String UserName){
+        myAccountPage.confirmationMessage(UserName);
+    }
 
 }
